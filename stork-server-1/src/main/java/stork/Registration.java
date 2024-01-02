@@ -12,14 +12,12 @@ import jakarta.enterprise.event.Observes;
 
 @ApplicationScoped
 public class Registration {
-
+    @ConfigProperty(name = "quarkus.http.port") int quarkusPort;
     @ConfigProperty(name = "consul.host") String host;
-    @ConfigProperty(name = "consul.port") int port;
-    @ConfigProperty(name = "blue-service-port", defaultValue = "9000") int blue;
-
+    @ConfigProperty(name = "consul.port") int consulPort;
     public void init(@Observes StartupEvent ev, Vertx vertx) {
-        ConsulClient client = ConsulClient.create(vertx, new ConsulClientOptions().setHost(host).setPort(port));
+        ConsulClient client = ConsulClient.create(vertx, new ConsulClientOptions().setHost(host).setPort(consulPort));
         client.registerServiceAndAwait(
-                new ServiceOptions().setPort(blue).setAddress("localhost").setName("my-service").setId("blue"));
+                new ServiceOptions().setPort(quarkusPort).setAddress("localhost").setName("my-service").setId("blue"));
     }
 }

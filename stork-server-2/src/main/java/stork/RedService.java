@@ -1,19 +1,17 @@
 package stork;
 
-import io.quarkus.runtime.StartupEvent;
-import io.vertx.mutiny.core.Vertx;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.event.Observes;
-
-@ApplicationScoped
+@Path("/")
 public class RedService {
-    @ConfigProperty(name = "red-service-port", defaultValue = "9001") int port;
-
-    public void init(@Observes StartupEvent ev, Vertx vertx) {
-        vertx.createHttpServer()
-                .requestHandler(req -> req.response().endAndForget("Hello from Red!"))
-                .listenAndAwait(port);
+    @GET
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String get() {
+        return "Hello Red";
     }
 }
