@@ -2,9 +2,9 @@
 
 # Quarkus_Stork
 
--Este projeto foi desenvolvido seguindo o tutorial do Quarkus para rodar uma aplicação dividindo a carga de trabalho em 2 instâncias.
--No projeto temos o 'stork-server-1' e o 'stork-server-2', ambos projetos tem a mesma ideia e nesse cenário seria a representação de cada instância da aplicação, apenas fizemos modificações como o nome do retorno para separar de onde está vindo.
--Também temos o 'stork-api', esse cara basicamente faz uma chamada para o 'consul' e ele administra esse mapeamento entre as 2 instâncias.
+- 1 - Este projeto foi desenvolvido seguindo o tutorial do Quarkus para rodar uma aplicação dividindo a carga de trabalho em 2 instâncias.
+- 2 - No projeto temos o 'stork-server-1' e o 'stork-server-2', ambos projetos tem a mesma ideia e nesse cenário seria a representação de cada instância da aplicação, apenas fizemos modificações como o nome do retorno para separar de onde está vindo.
+- 3 - Também temos o 'stork-api', esse cara basicamente faz uma chamada para o 'consul' e ele administra esse mapeamento entre as 2 instâncias.
 
 # Exemplo de uso
 
